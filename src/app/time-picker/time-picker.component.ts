@@ -12,8 +12,35 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class TimePickerComponent {
   hour: number = 0;
   minute: number = 0;
+  showHourList = false;
+  hours: string[] = [];
 
   @Output() timeChange = new EventEmitter<{ hour: number, minute: number }>();
+
+  constructor() {
+    this.initializeHours();
+  }
+
+  initializeHours() {
+    for (let hour = 0; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute += 15) {
+        const formattedHour = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        this.hours.push(formattedHour);
+      }
+    }
+  }
+
+  toggleHourList() {
+    this.showHourList = !this.showHourList;
+  }
+
+  selectHour(hour: string) {
+    const [selectedHour, selectedMinute] = hour.split(':');
+    // Suponiendo que tienes inputs con variables de template referenciadas como hourInput y minuteInput
+    this.hour = parseInt(selectedHour);
+    this.minute = parseInt(selectedMinute);
+    this.showHourList = false; // Oculta la lista después de seleccionar una hora
+  }
 
   changeHour(amount: number): void {
     this.hour = (this.hour + amount + 24) % 24;

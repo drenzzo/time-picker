@@ -5,5 +5,9 @@
     <div class="button-group">
         <button (mousedown)="startChange('increment')" (mouseup)="stopChange()" (mouseleave)="stopChange()">+</button>
         <button (mousedown)="startChange('decrement')" (mouseup)="stopChange()" (mouseleave)="stopChange()">-</button>
+        <button (click)="toggleHourList()">⏰</button>
     </div>
-  </div>
+</div>
+<ul *ngIf="showHourList" class="hour-list">
+    <li *ngFor="let hour of hours" (click)="selectHour(hour)">{{ hour }}</li>
+</ul>
