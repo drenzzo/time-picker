@@ -59,4 +59,24 @@ export class TimePickerComponent {
   emitTimeChange(): void {
     this.timeChange.emit({ hour: this.hour, minute: this.minute });
   }
+
+  intervalId: any = null;
+
+  startChange(action: 'increment' | 'decrement'): void {
+    this.stopChange(); // Prevenir múltiples intervalos
+    this.intervalId = setInterval(() => {
+      if (action === 'increment') {
+        this.changeMinute(1);
+      } else {
+        this.changeMinute(-1);
+      }
+    }, 100); // Ajusta el intervalo de tiempo según sea necesario
+  }
+
+  stopChange(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+  }
 }

@@ -1,17 +1,24 @@
-/* Paso 7: Estilos básicos en time-picker.component.css */
 .time-picker {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Asegura que los elementos estén distribuidos */
+  border: solid 1px #ccc;
+  border-radius: 3px;
+}
 
-  .time-part {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 10px;
-  }
+.time-input {
+  width: 15px; /* Ajustado para mejor visualización */
+  height: 15px; /* Hace el input cuadrado y más grande */
+  text-align: center;
+  margin-right: 1px; /* Ajusta el espacio si es necesario */
+  border: none;
+}
 
-  input[type="number"] {
-    width: 50px;
-    text-align: center;
-  }
+.time-separator {
+  margin-right: 1px; /* Asegura un espaciado consistente */
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+}
