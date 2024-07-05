@@ -1,0 +1,12 @@
+<div class="time-picker">
+    <div class="time-part">
+        <button (click)="changeHour(1)">+</button>
+        <input type="text" [value]="hour | number:'2.0-0'" (input)="onHourChange($event)">
+        <button (click)="changeHour(-1)">-</button>
+    </div>
+    <div class="time-part">
+        <button (click)="changeMinute(1)">+</button>
+        <input type="text" [value]="minute | number:'2.0-0'" (input)="onMinuteChange($event)">
+        <button (click)="changeMinute(-1)">-</button>
+    </div>
+</div>
